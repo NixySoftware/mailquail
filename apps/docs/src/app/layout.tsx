@@ -1,7 +1,7 @@
 import type {Metadata} from 'next';
 import {Inter} from 'next/font/google';
 
-import './globals.css';
+import '@repo/ui/styles/globals.css';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -10,7 +10,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     title: 'MailQuail Documentation',
-    description: ''
+    description: '',
+    icons: [{rel: 'icon', url: '/favicon.ico'}]
 };
 
 const RootLayout: React.FC<React.PropsWithChildren> = ({children}) => {

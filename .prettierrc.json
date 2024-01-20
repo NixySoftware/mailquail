@@ -1,7 +1,7 @@
 {
     "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
     "bracketSpacing": false,
-    "importOrder": ["^~/", "^[.]"],
+    "importOrder": ["^@repo/", "^[.]"],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true,
     "printWidth": 120,
