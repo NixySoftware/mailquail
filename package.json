@@ -1,5 +1,9 @@
 {
     "name": "mailquail",
+    "description": "Bring-your-own-server SMTP and IMAP mail service.",
+    "author": "Nixy <info@nixy.software>",
+    "repository": "github:NixyOrg/mailquail",
+    "license": "MIT",
     "private": true,
     "scripts": {
         "build": "turbo build",
