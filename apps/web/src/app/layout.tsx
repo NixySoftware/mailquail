@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import {Inter} from 'next/font/google';
 
+import {ThemeProvider} from '@repo/ui/components/theme-provider';
 import '@repo/ui/styles/globals.css';
 
 const inter = Inter({
@@ -17,7 +18,11 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<React.PropsWithChildren> = ({children}) => {
     return (
         <html lang="en">
-            <body className={inter.className}>{children}</body>
+            <body className={inter.className}>
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                    {children}
+                </ThemeProvider>
+            </body>
         </html>
     );
 };
