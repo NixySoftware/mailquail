@@ -4,6 +4,6 @@ module.exports = {
     extends: ['@repo/eslint-config/react-internal.js'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        project: path.join(__dirname, 'tsconfig.eslint.json')
+        project: true
     }
 };

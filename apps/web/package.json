@@ -17,6 +17,7 @@
     "devDependencies": {
         "@next/eslint-plugin-next": "^14.0.4",
         "@repo/eslint-config": "*",
+        "@repo/tailwind-config": "*",
         "@repo/typescript-config": "*",
         "@types/eslint": "^8.56.1",
         "@types/node": "^20.10.6",
