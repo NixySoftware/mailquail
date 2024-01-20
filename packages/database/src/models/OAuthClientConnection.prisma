@@ -1,0 +1,24 @@
+import {OAuthClientProvider} from "./OAuthClientProvider"
+import {User} from "./User"
+
+model OAuthClientConnection {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    identifier   String  @db.Text
+    refreshToken String? @db.Text
+    accessToken  String? @db.Text
+    expiresAt    Int?
+    tokenType    String? @db.Text
+    scope        String? @db.Text
+    idToken      String? @db.Text
+    sessionState String? @db.Text
+
+    provider   OAuthClientProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+    providerId String              @db.Uuid
+    user       User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId     String              @db.Uuid
+
+    @@unique([providerId, identifier])
+}

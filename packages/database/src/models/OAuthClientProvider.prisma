@@ -1,0 +1,40 @@
+import {User} from "./User"
+import {OAuthClientConnection} from "./OAuthClientConnection"
+
+enum OAuthClientProviderType {
+    AZURE_AD
+    OAUTH
+    OIDC
+    GOOGLE
+}
+
+enum OAuthClientProviderCheckType {
+    NONCE
+    NONE
+    PKCE
+    STATE
+}
+
+model OAuthClientProvider {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    name     String                  @db.VarChar(255)
+    slug     String?                 @db.VarChar(255)
+    type     OAuthClientProviderType
+    isGlobal Boolean                 @default(false)
+
+    // Parameters passed to NextAuth.js (https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/oauth.ts)
+    wellKnown     String?                       @db.Text
+    issuer        String?                       @db.Text
+    authorization Json?
+    token         Json?
+    userinfo      Json?
+    checks        OAuthClientProviderCheckType?
+    clientId      String?                       @db.Text
+    clientSecret  String?                       @db.Text
+    style         Json?
+
+    connections OAuthClientConnection[]
+}

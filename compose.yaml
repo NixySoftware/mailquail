@@ -1,0 +1,10 @@
+services:
+    postgresql:
+        image: postgres
+        restart: unless-stopped
+        ports:
+            - '25432:5432'
+        environment:
+            POSTGRES_USER: mailquail
+            POSTGRES_PASSWORD: mailquail
+            POSTGRES_DB: mailquail

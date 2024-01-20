@@ -6,10 +6,16 @@ const project = resolve(process.cwd(), 'tsconfig.json');
 module.exports = {
     extends: [
         'eslint:recommended',
+        'plugin:@typescript-eslint/strict-type-checked',
         'prettier',
         require.resolve('@vercel/style-guide/eslint/next'),
         'eslint-config-turbo'
     ],
+    parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint', 'only-warn'],
+    parserOptions: {
+        project: true
+    },
     globals: {
         React: true,
         JSX: true
@@ -18,7 +24,6 @@ module.exports = {
         node: true,
         browser: true
     },
-    plugins: ['only-warn'],
     settings: {
         'import/resolver': {
             typescript: {

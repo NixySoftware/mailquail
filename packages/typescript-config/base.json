@@ -17,6 +17,7 @@
         "strict": true,
         "target": "ES2022",
         "paths": {
+            "@repo/database": ["../../packages/database/src/index.ts"],
             "@repo/ui/*": ["../../packages/ui/src/*"]
         }
     }

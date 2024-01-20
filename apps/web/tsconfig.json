@@ -12,6 +12,7 @@
         "next.config.mjs",
         "postcss.config.cjs",
         "tailwind.config.ts",
+        "**/*.mjs",
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts"

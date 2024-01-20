@@ -1,0 +1,16 @@
+import {Entity} from "./Entity"
+
+model EmailAddress {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    email             String    @unique @db.VarChar(254)
+    isPrimary         Boolean   @default(false)
+    isVerified        Boolean   @default(false)
+    verificationToken String?   @db.VarChar(32)
+    verifiedAt        DateTime?
+
+    entity   Entity @relation(fields: [entityId], references: [id], onDelete: Cascade)
+    entityId String @db.Uuid
+}

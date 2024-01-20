@@ -1,0 +1,18 @@
+import {EmailAddress} from "./EmailAddress"
+// import {FileImage} from "./FileImage"
+import {User} from "./User"
+
+model Entity {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    handle String? @unique @db.Text
+    name   Json
+
+    // profileImage   FileImage?     @relation(fields: [profileImageId], references: [id])
+    // profileImageId String?        @unique @db.Uuid
+    profileImageUrl String?        @db.Text
+    user            User?
+    emailAddresses  EmailAddress[]
+}

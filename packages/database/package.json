@@ -1,0 +1,25 @@
+{
+    "name": "@repo/database",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "lint": "eslint . --max-warnings 0",
+        "prisma": "prisma-import -f -s '{prisma/base.prisma,src/**/*.prisma}' -o prisma/schema.prisma && prisma",
+        "generate": "npm run prisma generate"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.8.1",
+        "@t3-oss/env-core": "^0.7.3",
+        "zod": "^3.22.4"
+    },
+    "devDependencies": {
+        "@repo/eslint-config": "*",
+        "@repo/typescript-config": "*",
+        "@types/node": "^20.10.6",
+        "eslint": "^8.56.0",
+        "prisma": "^5.8.1",
+        "prisma-import": "^1.0.4",
+        "typescript": "^5.3.3"
+    }
+}

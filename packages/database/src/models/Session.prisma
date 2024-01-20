@@ -1,0 +1,13 @@
+import {User} from "./User"
+
+model Session {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    token     String   @unique
+    expiresAt DateTime
+
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId String @db.Uuid
+}

@@ -1,0 +1,14 @@
+import {Entity} from "./Entity"
+import {OAuthClientConnection} from "./OAuthClientConnection"
+import {Session} from "./Session"
+
+model User {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    session             Session[]
+    oauthClientAccounts OAuthClientConnection[]
+    entity              Entity                  @relation(fields: [entityId], references: [id], onDelete: Cascade)
+    entityId            String                  @unique @db.Uuid
+}
