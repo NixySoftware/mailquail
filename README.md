@@ -1,6 +1,6 @@
 <p align="center">
     <a href="./apps/docs/public/images/logo.svg" alt="MailQuail logo">
-        <img src="./apps/docs/public/images/logo.svg" width="256" height="256">
+        <img src="./apps/docs/public/images/logo-outline.svg" width="256" height="256">
     </a>
 </p>
 
