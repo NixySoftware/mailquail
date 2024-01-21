@@ -1,5 +1,7 @@
 import {EmailAddress} from "./EmailAddress"
 // import {FileImage} from "./FileImage"
+import {Group} from "./Group"
+import {GroupMembership} from "./GroupMembership"
 import {User} from "./User"
 
 model Entity {
@@ -12,7 +14,9 @@ model Entity {
 
     // profileImage   FileImage?     @relation(fields: [profileImageId], references: [id])
     // profileImageId String?        @unique @db.Uuid
-    profileImageUrl String?        @db.Text
-    user            User?
-    emailAddresses  EmailAddress[]
+    profileImageUrl  String?           @db.Text
+    user             User?
+    group            Group?
+    emailAddresses   EmailAddress[]
+    groupMemberships GroupMembership[]
 }
