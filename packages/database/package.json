@@ -9,9 +9,7 @@
         "generate": "npm run prisma generate"
     },
     "dependencies": {
-        "@prisma/client": "^5.8.1",
-        "@t3-oss/env-core": "^0.7.3",
-        "zod": "^3.22.4"
+        "@prisma/client": "^5.8.1"
     },
     "devDependencies": {
         "@repo/eslint-config": "*",
