@@ -1,0 +1,6 @@
+// SASL mechanisms (https://www.iana.org/assignments/sasl-mechanisms/sasl-mechanisms.xhtml)
+enum MailAuthenticationMechanism {
+    LOGIN
+    OAUTHBEARER
+    XOAUTH2
+}

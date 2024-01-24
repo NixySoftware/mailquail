@@ -1,21 +1,20 @@
 import {Entity} from "./Entity"
-import {MailServerIncoming} from "./MailServerIncoming"
-import {MailServerOutgoing} from "./MailServerOutgoing"
 import {Project} from "./Project"
+import { MailAccountIncoming } from "./MailAccountIncoming"
+import { MailAccountOutgoing } from "./MailAccountOutgoing"
 
 model MailAccount {
     id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    // TODO: auth and other settings
+    name String @db.VarChar(256)
+    // TODO: other settings
 
-    entity           Entity              @relation(fields: [entityId], references: [id], onDelete: Cascade)
-    entityId         String              @unique @db.Uuid
-    project          Project?            @relation(fields: [projectId], references: [id], onDelete: Cascade)
-    projectId        String?             @unique @db.Uuid
-    incomingServer   MailServerIncoming? @relation(fields: [incomingServerId], references: [id], onDelete: Cascade)
-    incomingServerId String?             @unique @db.Uuid
-    outgoingServer   MailServerOutgoing? @relation(fields: [outgoingServerId], references: [id], onDelete: Cascade)
-    outgoingServerId String?             @unique @db.Uuid
+    entity    Entity               @relation(fields: [entityId], references: [id], onDelete: Cascade)
+    entityId  String               @unique @db.Uuid
+    project   Project?             @relation(fields: [projectId], references: [id], onDelete: Cascade)
+    projectId String?              @unique @db.Uuid
+    incoming  MailAccountIncoming?
+    outgoing  MailAccountOutgoing?
 }

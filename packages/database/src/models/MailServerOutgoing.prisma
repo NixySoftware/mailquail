@@ -1,5 +1,5 @@
 import {Entity} from "./Entity"
-import {MailAccount} from "./MailAccount"
+import {MailAccountOutgoing} from "./MailAccountOutgoing"
 import {MailServerSecurityProtocol} from "./MailServerSecurityProtocol"
 import {Project} from "./Project"
 
@@ -12,14 +12,15 @@ model MailServerOutgoing {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
+    name             String                     @db.VarChar(256)
     host             String                     @db.Text
     port             Int                        @db.Integer
     protocol         MailServerOutgoingProtocol
     securityProtocol MailServerSecurityProtocol
 
-    entity    Entity        @relation(fields: [entityId], references: [id], onDelete: Cascade)
-    entityId  String        @unique @db.Uuid
-    project   Project?      @relation(fields: [projectId], references: [id], onDelete: Cascade)
-    projectId String?       @unique @db.Uuid
-    accounts  MailAccount[]
+    entity    Entity                @relation(fields: [entityId], references: [id], onDelete: Cascade)
+    entityId  String                @unique @db.Uuid
+    project   Project?              @relation(fields: [projectId], references: [id], onDelete: Cascade)
+    projectId String?               @unique @db.Uuid
+    accounts  MailAccountOutgoing[]
 }

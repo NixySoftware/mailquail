@@ -1,0 +1,16 @@
+import {MailAccountIncoming} from "./MailAccountIncoming"
+import {MailAccountOutgoing} from "./MailAccountOutgoing"
+
+model MailAuthenticationBasic {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    username String @db.Text
+    password String @db.Text
+
+    incomingAccount   MailAccountIncoming @relation(fields: [incomingAccountId], references: [id], onDelete: Cascade)
+    incomingAccountId String              @unique @db.Uuid
+    outgoingAccount   MailAccountOutgoing @relation(fields: [outgoingAccountId], references: [id], onDelete: Cascade)
+    outgoingAccountId String              @unique @db.Uuid
+}

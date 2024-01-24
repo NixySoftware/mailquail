@@ -1,0 +1,21 @@
+import {MailAccount} from "./MailAccount"
+import {MailAuthenticationBasic} from "./MailAuthenticationBasic"
+import {MailAuthenticationMechanism} from "./MailAuthenticationMechanism"
+import {MailAuthenticationOAuth2} from "./MailAuthenticationOAuth2"
+import {MailServerOutgoing} from "./MailServerOutgoing"
+import {Project} from "./Project"
+
+model MailAccountOutgoing {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    authenticationMechanism MailAuthenticationMechanism
+
+    account              MailAccount               @relation(fields: [accountId], references: [id], onDelete: Cascade)
+    accountId            String                    @unique @db.Uuid
+    server               MailServerOutgoing        @relation(fields: [serverId], references: [id], onDelete: Cascade)
+    serverId             String                    @unique @db.Uuid
+    authenticationBasic  MailAuthenticationBasic?
+    authenticationOAuth2 MailAuthenticationOAuth2?
+}
