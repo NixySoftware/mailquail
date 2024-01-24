@@ -1,11 +1,11 @@
 import {EmailAddress} from "./EmailAddress"
 // import {FileImage} from "./FileImage"
-import {Group} from "./Group"
-import {GroupMembership} from "./GroupMembership"
 import {MailAccount} from "./MailAccount"
 import {MailServerIncoming} from "./MailServerIncoming"
 import {MailServerOutgoing} from "./MailServerOutgoing"
 import {Project} from "./Project"
+import {Team} from "./Team"
+import {TeamMembership} from "./TeamMembership"
 import {User} from "./User"
 
 model Entity {
@@ -20,9 +20,9 @@ model Entity {
     // profileImageId String?        @unique @db.Uuid
     profileImageUrl     String?              @db.Text
     user                User?
-    group               Group?
+    team                Team?
     emailAddresses      EmailAddress[]
-    groupMemberships    GroupMembership[]
+    temaMemberships     TeamMembership[]
     projects            Project[]
     incomingMailServers MailServerIncoming[]
     outgoingMailServers MailServerOutgoing[]

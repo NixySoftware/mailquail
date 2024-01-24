@@ -1,13 +1,13 @@
 import {Entity} from "./Entity"
-import {Group} from "./Group"
+import {Team} from "./Team"
 
-model GroupMembership {
+model TeamMembership {
     id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    group    Group  @relation(fields: [groupId], references: [id], onDelete: Cascade)
-    groupId  String @db.Uuid
+    team     Team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
+    teamId   String @db.Uuid
     entity   Entity @relation(fields: [entityId], references: [id], onDelete: Cascade)
     entityId String @db.Uuid
 }
