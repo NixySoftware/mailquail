@@ -1,0 +1,19 @@
+import {Entity} from "./Entity"
+import {MailAccount} from "./MailAccount"
+import {MailServerIncoming} from "./MailServerIncoming"
+import {MailServerOutgoing} from "./MailServerOutgoing"
+
+model Project {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    name String @db.VarChar(255)
+    slug String @db.VarChar(255)
+
+    entity              Entity               @relation(fields: [entityId], references: [id], onDelete: Cascade)
+    entityId            String               @unique @db.Uuid
+    incomingMailServers MailServerIncoming[]
+    outgoingMailServers MailServerOutgoing[]
+    mailAccounts        MailAccount[]
+}

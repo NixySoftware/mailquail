@@ -2,6 +2,10 @@ import {EmailAddress} from "./EmailAddress"
 // import {FileImage} from "./FileImage"
 import {Group} from "./Group"
 import {GroupMembership} from "./GroupMembership"
+import {MailAccount} from "./MailAccount"
+import {MailServerIncoming} from "./MailServerIncoming"
+import {MailServerOutgoing} from "./MailServerOutgoing"
+import {Project} from "./Project"
 import {User} from "./User"
 
 model Entity {
@@ -14,9 +18,13 @@ model Entity {
 
     // profileImage   FileImage?     @relation(fields: [profileImageId], references: [id])
     // profileImageId String?        @unique @db.Uuid
-    profileImageUrl  String?           @db.Text
-    user             User?
-    group            Group?
-    emailAddresses   EmailAddress[]
-    groupMemberships GroupMembership[]
+    profileImageUrl     String?              @db.Text
+    user                User?
+    group               Group?
+    emailAddresses      EmailAddress[]
+    groupMemberships    GroupMembership[]
+    projects            Project[]
+    incomingMailServers MailServerIncoming[]
+    outgoingMailServers MailServerOutgoing[]
+    mailAccounts        MailAccount[]
 }

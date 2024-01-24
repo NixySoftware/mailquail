@@ -18,6 +18,7 @@ export const Topbar: React.FC = () => {
 
                     {/* <TeamSwitcher /> */}
                     <Nav className="mx-6" />
+
                     <div className="ml-auto flex items-center space-x-4">
                         {/* <Search /> */}
                         <UserDropdown />

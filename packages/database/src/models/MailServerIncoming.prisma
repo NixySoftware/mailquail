@@ -1,0 +1,25 @@
+import {Entity} from "./Entity"
+import {MailAccount} from "./MailAccount"
+import {MailServerSecurityProtocol} from "./MailServerSecurityProtocol"
+import {Project} from "./Project"
+
+enum MailServerIncomingProtocol {
+    IMAP
+}
+
+model MailServerIncoming {
+    id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    host             String                     @db.Text
+    port             Int                        @db.Integer
+    protocol         MailServerIncomingProtocol
+    securityProtocol MailServerSecurityProtocol
+
+    entity    Entity        @relation(fields: [entityId], references: [id], onDelete: Cascade)
+    entityId  String        @unique @db.Uuid
+    project   Project?      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+    projectId String?       @unique @db.Uuid
+    accounts  MailAccount[]
+}
