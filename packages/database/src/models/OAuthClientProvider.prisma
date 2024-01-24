@@ -1,11 +1,72 @@
-import {User} from "./User"
 import {OAuthClientConnection} from "./OAuthClientConnection"
+import {User} from "./User"
 
 enum OAuthClientProviderType {
+    SCHOOL_42
+    APPLE
+    ATLASSIAN
+    AUTH0
+    AUTHENTIK
     AZURE_AD
+    AZURE_AD_B2C
+    BATTLENET
+    BOX
+    BOXYHQ_SAML
+    BUNGIE
+    COGNITO
+    COINBASE
+    DISCORD
+    DROPBOX
+    DUENDE_IDENTITY_SERVER6
+    EVEONLINE
+    FACEBOOK
+    FACEIT
+    FOURSQUARE
+    FRESHBOOKS
+    FUSIONAUTH
+    GITHUB
+    GITLAB
+    GOOGLE
+    HUBSPOT
+    IDENTITY_SERVER4
+    INSTAGRAM
+    KAKAO
+    KEYCLOAK
+    LINE
+    LINKEDIN
+    MAILCHIMP
+    MAILRU
+    MEDIUM
+    NAVER
+    NETLIFY
     OAUTH
     OIDC
-    GOOGLE
+    OKTA
+    ONELOGIN
+    OSSO
+    OSU
+    PASSAGE
+    PATREON
+    PINTEREST
+    PIPEDRIVE
+    REDDIT
+    SALESFORCE
+    SLACK
+    SPOTIFY
+    STRAVA
+    TODOIST
+    TRAKT
+    TWITCH
+    TWITTER
+    UNITED_EFFECTS
+    VK
+    WIKIMEDIA
+    WORDPRESS
+    WORKOS
+    YANDEX
+    ZITADEL
+    ZOHO
+    ZOOM
 }
 
 enum OAuthClientProviderCheckType {

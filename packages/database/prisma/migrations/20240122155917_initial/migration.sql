@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "OAuthClientProviderType" AS ENUM ('AZURE_AD', 'OAUTH', 'OIDC', 'GOOGLE');
+CREATE TYPE "OAuthClientProviderType" AS ENUM ('SCHOOL_42', 'APPLE', 'ATLASSIAN', 'AUTH0', 'AUTHENTIK', 'AZURE_AD', 'AZURE_AD_B2C', 'BATTLENET', 'BOX', 'BOXYHQ_SAML', 'BUNGIE', 'COGNITO', 'COINBASE', 'DISCORD', 'DROPBOX', 'DUENDE_IDENTITY_SERVER6', 'EVEONLINE', 'FACEBOOK', 'FACEIT', 'FOURSQUARE', 'FRESHBOOKS', 'FUSIONAUTH', 'GITHUB', 'GITLAB', 'GOOGLE', 'HUBSPOT', 'IDENTITY_SERVER4', 'INSTAGRAM', 'KAKAO', 'KEYCLOAK', 'LINE', 'LINKEDIN', 'MAILCHIMP', 'MAILRU', 'MEDIUM', 'NAVER', 'NETLIFY', 'OAUTH', 'OIDC', 'OKTA', 'ONELOGIN', 'OSSO', 'OSU', 'PASSAGE', 'PATREON', 'PINTEREST', 'PIPEDRIVE', 'REDDIT', 'SALESFORCE', 'SLACK', 'SPOTIFY', 'STRAVA', 'TODOIST', 'TRAKT', 'TWITCH', 'TWITTER', 'UNITED_EFFECTS', 'VK', 'WIKIMEDIA', 'WORDPRESS', 'WORKOS', 'YANDEX', 'ZITADEL', 'ZOHO', 'ZOOM');
 
 -- CreateEnum
 CREATE TYPE "OAuthClientProviderCheckType" AS ENUM ('NONCE', 'NONE', 'PKCE', 'STATE');
@@ -37,10 +37,33 @@ CREATE TABLE "Entity" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "handle" TEXT,
-    "name" JSONB NOT NULL,
+    "name" TEXT NOT NULL,
     "profileImageUrl" TEXT,
 
     CONSTRAINT "Entity_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Group" (
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "entityId" UUID NOT NULL,
+
+    CONSTRAINT "Group_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "GroupMembership" (
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "startedAt" TIMESTAMP(3) NOT NULL,
+    "endedAt" TIMESTAMP(3),
+    "groupId" UUID NOT NULL,
+    "entityId" UUID NOT NULL,
+
+    CONSTRAINT "GroupMembership_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -119,6 +142,9 @@ CREATE UNIQUE INDEX "EmailAddress_email_key" ON "EmailAddress"("email");
 CREATE UNIQUE INDEX "Entity_handle_key" ON "Entity"("handle");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Group_entityId_key" ON "Group"("entityId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "OAuthClientConnection_providerId_identifier_key" ON "OAuthClientConnection"("providerId", "identifier");
 
 -- CreateIndex
@@ -129,6 +155,15 @@ CREATE UNIQUE INDEX "User_entityId_key" ON "User"("entityId");
 
 -- AddForeignKey
 ALTER TABLE "EmailAddress" ADD CONSTRAINT "EmailAddress_entityId_fkey" FOREIGN KEY ("entityId") REFERENCES "Entity"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Group" ADD CONSTRAINT "Group_entityId_fkey" FOREIGN KEY ("entityId") REFERENCES "Entity"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "GroupMembership" ADD CONSTRAINT "GroupMembership_groupId_fkey" FOREIGN KEY ("groupId") REFERENCES "Group"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "GroupMembership" ADD CONSTRAINT "GroupMembership_entityId_fkey" FOREIGN KEY ("entityId") REFERENCES "Entity"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "OAuthClientConnection" ADD CONSTRAINT "OAuthClientConnection_providerId_fkey" FOREIGN KEY ("providerId") REFERENCES "OAuthClientProvider"("id") ON DELETE CASCADE ON UPDATE CASCADE;

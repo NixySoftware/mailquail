@@ -6,16 +6,18 @@
         ".": "./src/index.ts"
     },
     "scripts": {
-        "dev": "next dev",
+        "dev": "next dev --turbo",
         "build": "next build",
         "start": "next start",
         "lint": "eslint . --max-warnings 0"
     },
     "dependencies": {
+        "@nixyorg/auth-adapter-prisma-providers": "^0.1.1",
         "@repo/database": "*",
         "@repo/ui": "*",
         "@t3-oss/env-nextjs": "^0.7.3",
         "next": "^14.0.4",
+        "next-auth": "^4.24.5",
         "next-themes": "^0.2.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"

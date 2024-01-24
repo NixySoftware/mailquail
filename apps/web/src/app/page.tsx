@@ -1,8 +1,10 @@
 import {prisma} from '@repo/database';
-import {Button} from '@repo/ui/components/ui/button';
-import {ModeToggle} from '@repo/ui/components/ui/mode-toggle';
+import {Button, ModeToggle} from '@repo/ui';
+
+import {getServerAuthSession} from '~/server/auth';
 
 const Page: React.FC = async () => {
+    const session = await getServerAuthSession();
     const entities = await prisma.entity.findMany();
 
     return (
@@ -10,6 +12,8 @@ const Page: React.FC = async () => {
             <Button>This is a button</Button>
 
             <ModeToggle />
+
+            <p>User: {session?.user.name}</p>
 
             <ul>
                 {entities.map((entity) => (

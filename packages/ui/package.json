@@ -2,7 +2,27 @@
     "name": "@repo/ui",
     "version": "0.0.0",
     "private": true,
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        },
+        "./*": {
+            "types": "./dist/*.d.ts",
+            "import": "./dist/*.js"
+        },
+        "./styles/globals.css": {
+            "import": "./dist/styles/globals.css"
+        }
+    },
     "scripts": {
+        "build:styles": "mkdir -p ./dist && cp -r ./src/styles ./dist/styles",
+        "build": "tsc && npm run build:styles",
+        "dev": "npm run build:styles && tsc --watch",
         "lint": "eslint . --max-warnings 0",
         "ui:add": "npx shadcn-ui@latest add"
     },

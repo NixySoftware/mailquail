@@ -7,7 +7,7 @@
         "build": {
             "dependsOn": ["^build"],
             "dotEnv": [".env.production.local", ".env.local", ".env.production", ".env"],
-            "outputs": [".next/**", "!.next/cache/**"]
+            "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
         },
         "dev": {
             "cache": false,

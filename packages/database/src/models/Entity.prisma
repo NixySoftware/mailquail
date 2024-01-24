@@ -10,7 +10,7 @@ model Entity {
     updatedAt DateTime @updatedAt
 
     handle String? @unique @db.Text
-    name   Json
+    name   String  @db.Text
 
     // profileImage   FileImage?     @relation(fields: [profileImageId], references: [id])
     // profileImageId String?        @unique @db.Uuid

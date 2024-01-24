@@ -3,7 +3,18 @@
     "version": "0.0.0",
     "private": true,
     "type": "module",
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
     "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
         "lint": "eslint . --max-warnings 0",
         "prisma": "prisma-import -f -s '{prisma/base.prisma,src/**/*.prisma}' -o prisma/schema.prisma && prisma",
         "generate": "npm run prisma generate"
