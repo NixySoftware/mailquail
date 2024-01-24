@@ -6,6 +6,8 @@ model MailAuthenticationOAuth2 {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
+    // TODO
+
     incomingAccount   MailAccountIncoming @relation(fields: [incomingAccountId], references: [id], onDelete: Cascade)
     incomingAccountId String              @unique @db.Uuid
     outgoingAccount   MailAccountOutgoing @relation(fields: [outgoingAccountId], references: [id], onDelete: Cascade)
