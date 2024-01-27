@@ -36,5 +36,13 @@ module.exports = {
         '.*.js',
         'node_modules/'
     ],
+    rules: {
+        '@typescript-eslint/no-misused-promises': [
+            'error',
+            {
+                checksVoidReturn: false
+            }
+        ]
+    },
     overrides: [{files: ['*.js?(x)', '*.ts?(x)']}]
 };

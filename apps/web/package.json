@@ -12,15 +12,19 @@
         "lint": "eslint . --max-warnings 0"
     },
     "dependencies": {
+        "@hookform/resolvers": "^3.3.4",
         "@nixyorg/auth-adapter-prisma-providers": "^0.1.1",
         "@repo/database": "*",
         "@repo/ui": "*",
         "@t3-oss/env-nextjs": "^0.7.3",
+        "lucide-react": "^0.316.0",
         "next": "^14.0.4",
         "next-auth": "^4.24.5",
         "next-themes": "^0.2.1",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-hook-form": "^7.49.3",
+        "zod": "^3.22.4"
     },
     "devDependencies": {
         "@next/eslint-plugin-next": "^14.0.4",

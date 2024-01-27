@@ -4,6 +4,8 @@ import {Inter} from 'next/font/google';
 import {ThemeProvider} from '@repo/ui/components/theme-provider';
 import '@repo/ui/styles/globals.css';
 
+import {Layout} from '~/components/layout/layout';
+
 const inter = Inter({
     subsets: ['latin'],
     variable: '--font-sans'
@@ -20,7 +22,7 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({children}) => {
         <html lang="en" suppressHydrationWarning>
             <body className={inter.className}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    {children}
+                    <Layout>{children}</Layout>
                 </ThemeProvider>
             </body>
         </html>

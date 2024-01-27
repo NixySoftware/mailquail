@@ -1,22 +1,38 @@
-import Link from 'next/link';
-
 import {cn} from '@repo/ui';
+
+import {NavLink} from './nav-link';
 
 export const Nav: React.FC<React.HTMLAttributes<HTMLElement>> = ({className, ...props}) => {
     return (
         <nav className={cn('flex items-center space-x-4 lg:space-x-6', className)} {...props}>
-            <Link href="#" className="hover:text-primary text-sm font-medium transition-colors">
+            <NavLink
+                href="/"
+                className="text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
+                activeClassName="text-foreground"
+            >
                 Overview
-            </Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary text-sm font-medium transition-colors">
-                Customers
-            </Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary text-sm font-medium transition-colors">
-                Products
-            </Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary text-sm font-medium transition-colors">
+            </NavLink>
+            <NavLink
+                href="#"
+                className="text-muted-foreground  hover:text-primary text-sm font-medium transition-colors"
+                activeClassName="text-foreground"
+            >
+                Mail accounts
+            </NavLink>
+            <NavLink
+                href="#"
+                className="text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
+                activeClassName="text-foreground"
+            >
+                Mail servers
+            </NavLink>
+            <NavLink
+                href="#"
+                className="text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
+                activeClassName="text-foreground"
+            >
                 Settings
-            </Link>
+            </NavLink>
         </nav>
     );
 };
