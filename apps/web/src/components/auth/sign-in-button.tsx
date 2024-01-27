@@ -3,10 +3,11 @@
 import type {OAuthClientProvider} from '@prisma/client';
 import {signIn} from 'next-auth/react';
 import Image from 'next/image';
+import {useSearchParams} from 'next/navigation';
 import {useState} from 'react';
 
 import {cn} from '@repo/ui';
-import {Button, buttonVariants} from '@repo/ui/components/ui/button';
+import {Button} from '@repo/ui/components/ui/button';
 
 import {PROVIDER_CLASS_BY_TYPE} from './providers';
 
@@ -15,16 +16,21 @@ export interface SignInButtonProps {
 }
 
 export const SignInButton: React.FC<SignInButtonProps> = ({provider}) => {
+    const searchParams = useSearchParams();
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClick = async () => {
         setIsLoading(true);
-        await signIn(provider.id);
+
+        await signIn(provider.id, {
+            callbackUrl: searchParams.get('from') ?? '/'
+        });
     };
 
     return (
         <Button
-            className={cn(buttonVariants({variant: 'outline'}), 'gap-3', PROVIDER_CLASS_BY_TYPE[provider.type])}
+            className={cn('gap-3', PROVIDER_CLASS_BY_TYPE[provider.type])}
+            variant="outline"
             disabled={isLoading}
             onClick={handleClick}
         >

@@ -23,7 +23,7 @@ export const Topbar: React.FC<TopbarProps> = ({user}) => {
                     </div>
 
                     {/* <TeamSwitcher /> */}
-                    <Nav className="mx-6" />
+                    {user && <Nav className="mx-6" />}
 
                     <div className="ml-auto flex items-center space-x-4">
                         {/* <Search /> */}
