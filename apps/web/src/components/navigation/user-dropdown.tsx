@@ -41,10 +41,7 @@ export const UserDropdown: React.FC<UserDropdownProps> = ({user}) => {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                     <DropdownMenuItem className="cursor-pointer" asChild>
-                        <Link href="/profile">Profile</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer" asChild>
-                        <Link href="#">Settings</Link>
+                        <Link href="/account/profile">Account</Link>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />

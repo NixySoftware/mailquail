@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import {Nav} from './nav';
 import {NavLink} from './nav-link';
+import {TeamSwitcher} from './team-switcher';
 import {UserDropdown} from './user-dropdown';
 
 export interface TopbarProps {
@@ -22,8 +23,12 @@ export const Topbar: React.FC<TopbarProps> = ({user}) => {
                         </Link>
                     </div>
 
-                    {/* <TeamSwitcher /> */}
-                    {user && <Nav className="mx-6" />}
+                    {user && (
+                        <>
+                            <TeamSwitcher className="mx-6" user={user} />
+                            <Nav />
+                        </>
+                    )}
 
                     <div className="ml-auto flex items-center space-x-4">
                         {/* <Search /> */}
