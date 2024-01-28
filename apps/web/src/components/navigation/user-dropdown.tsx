@@ -52,7 +52,9 @@ export const UserDropdown: React.FC<UserDropdownProps> = ({user}) => {
                     className="cursor-pointer"
                     onSelect={async (event) => {
                         event.preventDefault();
-                        await signOut();
+                        await signOut({
+                            callbackUrl: '/auth/signin'
+                        });
                     }}
                 >
                     Sign out

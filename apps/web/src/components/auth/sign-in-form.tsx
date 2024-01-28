@@ -1,10 +1,8 @@
 'use client';
 
 import {zodResolver} from '@hookform/resolvers/zod';
-import 'lucide-react';
 import {Loader2} from 'lucide-react';
 import {signIn} from 'next-auth/react';
-import {useSearchParams} from 'next/navigation';
 import {useForm} from 'react-hook-form';
 import {z} from 'zod';
 
@@ -16,32 +14,23 @@ const formSchema = z.object({
     email: z.string().email()
 });
 
-export const SignInForm = () => {
-    const searchParams = useSearchParams();
+export interface SignInFormProps {
+    callbackUrl: string;
+}
 
+export const SignInForm: React.FC<SignInFormProps> = ({callbackUrl}) => {
     const form = useForm<z.infer<typeof formSchema>>({
+        defaultValues: {
+            email: ''
+        },
         resolver: zodResolver(formSchema)
     });
 
     const onSubmit = form.handleSubmit(async (data) => {
         await signIn('email', {
             email: data.email.toLowerCase(),
-            redirect: false,
-            callbackUrl: searchParams.get('from') ?? '/'
+            callbackUrl
         });
-
-        // if (!signInResult?.ok) {
-        //     return toast({
-        //         title: 'Something went wrong.',
-        //         description: 'Your sign in request failed. Please try again.',
-        //         variant: 'destructive'
-        //     });
-        // }
-
-        // return toast({
-        //     title: 'Check your email',
-        //     description: 'We sent you a login link. Be sure to check your spam too.'
-        // });
     });
 
     return (

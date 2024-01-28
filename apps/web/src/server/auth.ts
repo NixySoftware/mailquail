@@ -26,10 +26,10 @@ export const getBaseAuthOptions = (): AuthOptions => ({
         })
     },
     pages: {
-        // error: '/auth/error',
-        // signIn: '/auth/signin',
-        // signOut: '/auth/signout',
-        // verifyRequest: '/auth/verify'
+        error: '/auth/error',
+        signIn: '/auth/signin',
+        signOut: '/auth/signout',
+        verifyRequest: '/auth/verify'
     },
     providers: [
         Email({

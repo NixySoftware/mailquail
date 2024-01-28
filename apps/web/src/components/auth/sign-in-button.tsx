@@ -3,7 +3,6 @@
 import type {OAuthClientProvider} from '@prisma/client';
 import {signIn} from 'next-auth/react';
 import Image from 'next/image';
-import {useSearchParams} from 'next/navigation';
 import {useState} from 'react';
 
 import {cn} from '@repo/ui';
@@ -13,17 +12,17 @@ import {PROVIDER_CLASS_BY_TYPE} from './providers';
 
 export interface SignInButtonProps {
     provider: OAuthClientProvider;
+    callbackUrl: string;
 }
 
-export const SignInButton: React.FC<SignInButtonProps> = ({provider}) => {
-    const searchParams = useSearchParams();
+export const SignInButton: React.FC<SignInButtonProps> = ({provider, callbackUrl}) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClick = async () => {
         setIsLoading(true);
 
         await signIn(provider.id, {
-            callbackUrl: searchParams.get('from') ?? '/'
+            callbackUrl
         });
     };
 

@@ -1,12 +1,11 @@
 import {getGlobalOAuthClientProviders} from '@nixyorg/auth-adapter-prisma-providers';
-import Image from 'next/image';
 import {redirect} from 'next/navigation';
 
 import {prisma} from '@repo/database';
 import {cn} from '@repo/ui';
+import {Alert, AlertDescription, AlertTitle} from '@repo/ui/components/ui/alert';
 
-// import {Alert} from '~/components/alert/Alert';
-// import {AuthCard} from '~/components/auth/AuthCard';
+import {AuthHeader} from '~/components/auth/auth-header';
 import {SignInButton} from '~/components/auth/sign-in-button';
 import {SignInForm} from '~/components/auth/sign-in-form';
 import {getServerAuthSession} from '~/server/auth';
@@ -28,40 +27,33 @@ const errorTexts: Record<string, string | undefined> = {
 interface SignInPageProps {
     searchParams: {
         error?: string;
+        from?: string;
     };
 }
 
-const SignInPage: React.FC<SignInPageProps> = async ({searchParams: {error}}) => {
+const SignInPage: React.FC<SignInPageProps> = async ({searchParams: {error, from}}) => {
     const session = await getServerAuthSession();
     if (session) {
         redirect('/');
     }
 
     const providers = await getGlobalOAuthClientProviders(prisma);
-
-    // return (
-    //     <AuthCard title="Sign in to your account">
-    //         {error && (
-    //             <Alert className="mb-6" severity="error" title="Authentication error">
-    //                 <p>{errorTexts[error] ?? errorTexts.default}</p>
-    //             </Alert>
-    //         )}
-    //         <SignInForm />
-    //     </AuthCard>
-    // );
+    const callbackUrl = from ?? '/';
 
     return (
-        <div className="mx-auto flex h-full w-full flex-col justify-center space-y-6 sm:w-[350px]">
-            <div className="mt-[-64px] flex flex-col space-y-2 text-center">
-                <Image className="mx-auto" src="/images/logo.svg" alt="MailQuail logo" width={64} height={64} />
+        <>
+            <AuthHeader>Sign in</AuthHeader>
 
-                <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
-                <p className="text-muted-foreground text-sm">Sign in with an authentication provider</p>
-            </div>
+            {error && (
+                <Alert variant="destructive">
+                    <AlertTitle>Error</AlertTitle>
+                    <AlertDescription>{errorTexts[error] ?? errorTexts.default}</AlertDescription>
+                </Alert>
+            )}
 
             <div className={cn('grid gap-6')}>
                 {providers.map((provider) => (
-                    <SignInButton key={provider.id} provider={provider} />
+                    <SignInButton key={provider.id} provider={provider} callbackUrl={callbackUrl} />
                 ))}
 
                 {providers.length > 0 && (
@@ -75,7 +67,7 @@ const SignInPage: React.FC<SignInPageProps> = async ({searchParams: {error}}) =>
                     </div>
                 )}
 
-                <SignInForm />
+                <SignInForm callbackUrl={callbackUrl} />
             </div>
 
             {/* <p className="text-muted-foreground px-8 text-center text-sm">
@@ -83,7 +75,7 @@ const SignInPage: React.FC<SignInPageProps> = async ({searchParams: {error}}) =>
                     Don&apos;t have an account? Sign Up
                 </Link>
             </p> */}
-        </div>
+        </>
     );
 };
 
