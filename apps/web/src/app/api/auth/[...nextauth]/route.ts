@@ -1,4 +1,4 @@
-import {createRouteHandler} from '@nixyorg/auth-adapter-prisma-providers';
+import {createRouteHandler} from '@nixysoftware/auth-adapter-prisma-providers';
 
 import {prisma} from '@repo/database';
 

@@ -1,4 +1,4 @@
-import {getGlobalOAuthClientProviders} from '@nixyorg/auth-adapter-prisma-providers';
+import {getGlobalOAuthClientProviders} from '@nixysoftware/auth-adapter-prisma-providers';
 import {redirect} from 'next/navigation';
 
 import {prisma} from '@repo/database';

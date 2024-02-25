@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "@hookform/resolvers": "^3.3.4",
-        "@nixyorg/auth-adapter-prisma-providers": "^0.1.1",
+        "@nixysoftware/auth-adapter-prisma-providers": "^0.1.1",
         "@repo/database": "*",
         "@repo/ui": "*",
         "@t3-oss/env-nextjs": "^0.7.3",
