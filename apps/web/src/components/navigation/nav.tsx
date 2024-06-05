@@ -14,7 +14,7 @@ export const Nav: React.FC<React.HTMLAttributes<HTMLElement>> = ({className, ...
             </NavLink>
             <NavLink
                 href="#"
-                className="text-muted-foreground  hover:text-primary text-sm font-medium transition-colors"
+                className="text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
                 activeClassName="text-foreground"
             >
                 Mail accounts
