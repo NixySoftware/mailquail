@@ -16,7 +16,7 @@
         "@nixysoftware/auth-adapter-prisma-providers": "^0.1.1",
         "@repo/database": "*",
         "@repo/ui": "*",
-        "@t3-oss/env-nextjs": "^0.10.0",
+        "@t3-oss/env-nextjs": "^0.11.0",
         "lucide-react": "^0.412.0",
         "next": "^14.0.4",
         "next-auth": "^4.24.5",
