@@ -10,13 +10,13 @@
     },
     "dependencies": {
         "@repo/ui": "*",
-        "next": "^14.0.4",
+        "next": "^15.0.0",
         "next-themes": "^0.3.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
-        "@next/eslint-plugin-next": "^14.0.4",
+        "@next/eslint-plugin-next": "^15.0.0",
         "@repo/eslint-config": "*",
         "@repo/typescript-config": "*",
         "@types/eslint": "^8.56.1",
