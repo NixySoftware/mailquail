@@ -20,14 +20,14 @@
         "generate": "npm run prisma generate"
     },
     "dependencies": {
-        "@prisma/client": "^5.15.0"
+        "@prisma/client": "^6.0.0"
     },
     "devDependencies": {
         "@repo/eslint-config": "*",
         "@repo/typescript-config": "*",
         "@types/node": "^20.10.6",
         "eslint": "^8.56.0",
-        "prisma": "^5.15.0",
+        "prisma": "^6.0.0",
         "prisma-import": "^1.0.4",
         "typescript": "^5.3.3"
     }
