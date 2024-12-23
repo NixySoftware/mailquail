@@ -25,7 +25,7 @@
     "devDependencies": {
         "@repo/eslint-config": "*",
         "@repo/typescript-config": "*",
-        "@types/node": "^20.10.6",
+        "@types/node": "^22.0.0",
         "eslint": "^8.56.0",
         "prisma": "^5.15.0",
         "prisma-import": "^1.0.4",
