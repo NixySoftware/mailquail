@@ -12,7 +12,7 @@
         "lint": "eslint . --max-warnings 0"
     },
     "dependencies": {
-        "@hookform/resolvers": "^3.3.4",
+        "@hookform/resolvers": "^4.0.0",
         "@nixysoftware/auth-adapter-prisma-providers": "^0.1.1",
         "@repo/database": "*",
         "@repo/ui": "*",
